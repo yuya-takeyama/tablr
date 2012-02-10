@@ -1,7 +1,7 @@
 <?php
 require_once 'Tablr/Table.php';
 
-class Tablr_TableTest extends PHPUnit_Framework_TestCase
+class Tablr_TableTest extends TablrTestCase
 {
     /**
      * @test

@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/Row.php';
 
-class Tablr_Table
+class Tablr_Table implements ArrayAccess
 {
     /**
      * Header columns.
@@ -71,5 +71,25 @@ class Tablr_Table
     protected function _setHeaderFromRow($row)
     {
         $this->_header = array_keys($row);
+    }
+
+    public function offsetSet($key, $value)
+    {
+        throw new BadMethodCallException(__METHOD__ . ' is immutable.');
+    }
+
+    public function offsetGet($key)
+    {
+        return $this->_rows[$key];
+    }
+
+    public function offsetExists($key)
+    {
+        return isset($this->_rows[$key]);
+    }
+
+    public function offsetUnset($key)
+    {
+        throw new BadMethodCallException(__METHOD__ . ' is immutable.');
     }
 }
