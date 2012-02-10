@@ -8,8 +8,8 @@ class Tablr
      *
      * @return Tablr_Table
      */
-    public function createTable()
+    public function createTable($rows = array())
     {
-        return new Tablr_Table;
+        return new Tablr_Table($rows);
     }
 }
