@@ -25,7 +25,7 @@ class Tablr_Table
     public function __construct($rows = array())
     {
         foreach ($rows as $row) {
-            $this->addRow(new Tablr_Row($row));
+            $this->addRow($row);
         }
     }
 
@@ -58,10 +58,18 @@ class Tablr_Table
      */
     public function addRow($row)
     {
+        if (is_null($this->_header)) {
+            $this->_setHeaderFromRow($row);
+        }
         if ($row instanceof Tablr_Row) {
             $this->_rows[] = $row;
         } else {
             $this->_rows[] = new Tablr_Row($row);
         }
+    }
+
+    protected function _setHeaderFromRow($row)
+    {
+        $this->_header = array_keys($row);
     }
 }
