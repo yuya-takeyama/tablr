@@ -24,4 +24,14 @@ class Tablr_TableTest extends TablrTestCase
         $table->setHeader($header);
         $this->assertEquals($header, $table->getHeader());
     }
+
+    /**
+     * @test
+     */
+    public function offsetGet_should_return_Row()
+    {
+        $row   = array('foo' => 1, 'bar' => 2, 'baz' => 2);
+        $table = new Tablr_Table(array($row));
+        $this->assertEqualsAsRow($row, $table[0]);
+    }
 }
