@@ -78,6 +78,7 @@ class Tablr_Formatter_PlainText
             if ($row->isHeader() === false) {
                 $padType = $this->_getPadType($cell);
             }
+            $cell = $this->_getFormattedString($cell);
             $result .= $this->getPaddedString($cell, $sizes[$i], ' ', $padType) . '|';
             $i++;
         }

@@ -48,6 +48,20 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
             ),
             array(
                 $this->createTable(array(
+                    array('foo' => 1234),
+                )),
+                "| foo |\n" .
+                "|1,234|\n"
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 1234.567),
+                )),
+                "|  foo   |\n" .
+                "|1,234.57|\n"
+            ),
+            array(
+                $this->createTable(array(
                     array('foo' => 'あいうえお', 'bar' => 'あ'),
                 )),
                 "|   foo    |bar|\n" .
