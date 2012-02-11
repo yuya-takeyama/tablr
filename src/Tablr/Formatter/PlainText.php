@@ -4,7 +4,7 @@ class Tablr_Formatter_PlainText
     public function format($table)
     {
         $sizes = $this->getCellSizes($table);
-        $result = $this->_formatRow($table->getHeader(), $sizes);
+        $result = '';
         foreach ($table as $row) {
             $result .= $this->_formatRow($row, $sizes);
         }
@@ -19,15 +19,11 @@ class Tablr_Formatter_PlainText
     public static function getCellSizes($table)
     {
         $sizes = array();
-        $header = $table->getHeader();
-        foreach ($header as $cell) {
-            $sizes[] = mb_strwidth($cell, 'UTF-8');
-        }
         foreach ($table as $row) {
             $i = 0;
             foreach ($row as $cell) {
                 $size = mb_strwidth($cell, 'UTF-8');
-                if ($sizes[$i] < $size) {
+                if (array_key_exists($i, $sizes) === false || $sizes[$i] < $size) {
                     $sizes[$i] = $size;
                 }
                 $i++;

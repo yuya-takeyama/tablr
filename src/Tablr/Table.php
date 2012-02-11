@@ -97,6 +97,6 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
 
     public function getIterator()
     {
-        return new ArrayIterator($this->_rows);
+        return new ArrayIterator(array_merge(array($this->getHeader()), $this->_rows));
     }
 }
