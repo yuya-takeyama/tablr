@@ -60,7 +60,25 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
                     array('foo' => 'FOO'),
                 )),
                 array(3),
-            )
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'a'),
+                )),
+                array(3),
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'foobar'),
+                )),
+                array(6),
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'FOO', 'foobar' => 'FOOBAR'),
+                )),
+                array(3, 6),
+            ),
         );
     }
 }
