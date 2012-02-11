@@ -14,4 +14,29 @@ class Tablr_Formatter_PlainText
         }
         return $result;
     }
+
+    /**
+     * Traverses all rows and gets the longest size of each columns.
+     *
+     * @return array
+     */
+    public static function getCellSizes($table)
+    {
+        $sizes = array();
+        $header = $table->getHeader();
+        foreach ($header as $cell) {
+            $sizes[] = mb_strwidth($cell, 'UTF-8');
+        }
+        foreach ($table as $row) {
+            $i = 0;
+            foreach ($row as $cell) {
+                $size = mb_strwidth($cell, 'UTF-8');
+                if ($sizes[$i] < $size) {
+                    $sizes[$i] = $size;
+                }
+                $i++;
+            }
+        }
+        return $sizes;
+    }
 }
