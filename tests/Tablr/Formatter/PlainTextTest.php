@@ -15,46 +15,37 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
 
     /**
      * @test
+     * @dataProvider provideTableAndExpectedText
      */
-    public function format_should_return_table_as_text()
+    public function format_should_return_table_as_text($table, $expected)
     {
-        $table = $this->createTable(array(
-            array('foo' => 'FOO'),
-        ));
-        $this->assertEquals(
-            "|foo|\n" .
-            "|FOO|\n",
-            $this->formatter->format($table)
-        );
+        $this->assertEquals($expected, $this->formatter->format($table));
     }
 
-    /**
-     * @test
-     */
-    public function format_should_expand_cells_as_size_of_longest_cell()
+    public function provideTableAndExpectedText()
     {
-        $table = $this->createTable(array(
-            array('foo' => 'a'),
-        ));
-        $this->assertEquals(
-            "|foo|\n" .
-            "|a  |\n",
-            $this->formatter->format($table)
-        );
-    }
-
-    /**
-     * @test
-     */
-    public function format_should_expand_cells_correctly_if_multibyte_chars_are_included()
-    {
-        $table = $this->createTable(array(
-            array('foo' => 'あいうえお', 'bar' => 'あ'),
-        ));
-        $this->assertEquals(
-            "|foo       |bar|\n" .
-            "|あいうえお|あ |\n",
-            $this->formatter->format($table)
+        return array(
+            array(
+                $this->createTable(array(
+                    array('foo' => 'FOO'),
+                )),
+                "|foo|\n" .
+                "|FOO|\n",
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'a'),
+                )),
+                "|foo|\n" .
+                "|a  |\n",
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'あいうえお', 'bar' => 'あ'),
+                )),
+                "|foo       |bar|\n" .
+                "|あいうえお|あ |\n",
+            ),
         );
     }
 
