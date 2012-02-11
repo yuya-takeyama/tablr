@@ -22,7 +22,7 @@ class Tablr_Formatter_PlainText
         foreach ($table as $row) {
             $i = 0;
             foreach ($row as $cell) {
-                $size = mb_strwidth($cell, 'UTF-8');
+                $size = self::_getSizeAsString($cell);
                 if (array_key_exists($i, $sizes) === false || $sizes[$i] < $size) {
                     $sizes[$i] = $size;
                 }
@@ -43,7 +43,7 @@ class Tablr_Formatter_PlainText
      */
     public static function getPaddedString($input, $size, $padWith, $type = STR_PAD_RIGHT)
     {
-        $inputSize = mb_strwidth($input, 'UTF-8');
+        $inputSize = self::_getSizeAsString($input);
         if (($insufficient = $size - $inputSize) > 0) {
             $padding = str_repeat($padWith, $insufficient);
         }
@@ -70,11 +70,45 @@ class Tablr_Formatter_PlainText
     protected function _formatRow($row, $sizes)
     {
         $result = '|';
+        if ($row->isHeader()) {
+            $padType = STR_PAD_BOTH;
+        }
         $i = 0;
         foreach ($row as $cell) {
-            $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
+            if ($row->isHeader() === false) {
+                $padType = $this->_getPadType($cell);
+            }
+            $result .= $this->getPaddedString($cell, $sizes[$i], ' ', $padType) . '|';
             $i++;
         }
         return "{$result}\n";
+    }
+
+    protected static function _getFormattedString($value)
+    {
+        switch (gettype($value)) {
+        case 'string':
+            return $value;
+        case 'integer':
+            return number_format($value);
+        case 'double':
+            return number_format($value, 2);
+        }
+    }
+
+    protected static function _getSizeAsString($value)
+    {
+        return mb_strwidth(self::_getFormattedString($value), 'UTF-8');
+    }
+
+    protected static function _getPadType($value)
+    {
+        switch (gettype($value)) {
+        case 'integer':
+        case 'double':
+            return STR_PAD_LEFT;
+        default:
+            return STR_PAD_RIGHT;
+        }
     }
 }
