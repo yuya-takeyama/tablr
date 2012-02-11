@@ -45,6 +45,22 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
 
     /**
      * @test
+     */
+    public function format_should_expand_cells_correctly_if_multibyte_chars_are_included()
+    {
+        $this->markTestIncomplete();
+        $table = $this->createTable(array(
+            array('foo' => 'あいうえお', 'bar' => 'あ'),
+        ));
+        $this->assertEquals(
+            "|foo       |bar|\n" .
+            "|あいうえお|あ |\n",
+            $this->formatter->format($table)
+        );
+    }
+
+    /**
+     * @test
      * @dataProvider provideTableAndExpectedSizes
      */
     public function getCellSizes_should_be_the_longest_size_of_each_colomuns($table, $sizes)
