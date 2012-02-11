@@ -4,20 +4,9 @@ class Tablr_Formatter_PlainText
     public function format($table)
     {
         $sizes = $this->getCellSizes($table);
-        $result = '';
-        $result .= '|';
-        foreach ($table->getHeader() as $i => $cell) {
-            $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
-        }
-        $result .= "\n";
+        $result = $this->_formatRow($table->getHeader(), $sizes);
         foreach ($table as $row) {
-            $result .= "|";
-            $i = 0;
-            foreach ($row as $cell) {
-                $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
-                $i++;
-            }
-            $result .= "\n";
+            $result .= $this->_formatRow($row, $sizes);
         }
         return $result;
     }
@@ -74,5 +63,22 @@ class Tablr_Formatter_PlainText
             }
         }
         return str_repeat($padWith, $leftLength) . $input . str_repeat($padWith, $rightLength);
+    }
+
+    /**
+     * Formats row as string.
+     *
+     * @param  Tablr_Row|array $row
+     * @return string
+     */
+    protected function _formatRow($row, $sizes)
+    {
+        $result = '|';
+        $i = 0;
+        foreach ($row as $cell) {
+            $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
+            $i++;
+        }
+        return "{$result}\n";
     }
 }
