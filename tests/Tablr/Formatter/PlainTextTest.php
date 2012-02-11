@@ -33,7 +33,6 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
      */
     public function format_should_expand_cells_as_size_of_longest_cell()
     {
-        $this->markTestIncomplete();
         $table = $this->createTable(array(
             array('foo' => 'a'),
         ));
