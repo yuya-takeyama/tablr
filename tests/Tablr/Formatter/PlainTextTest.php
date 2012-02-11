@@ -123,6 +123,7 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
             array('a', 5, ' ', STR_PAD_LEFT,  '    a'),
             array('a', 5, ' ', STR_PAD_BOTH,  '  a  '),
             array('a', 4, ' ', STR_PAD_BOTH,  ' a  '),
+            array('あ', 5, ' ', STR_PAD_RIGHT, 'あ   '),
         );
     }
 }

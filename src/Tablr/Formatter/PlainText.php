@@ -58,6 +58,21 @@ class Tablr_Formatter_PlainText
      */
     public static function getPaddedString($input, $size, $padWith, $type = STR_PAD_RIGHT)
     {
-        return str_pad($input, $size, $padWith, $type);
+        $inputSize = mb_strwidth($input, 'UTF-8');
+        if (($insufficient = $size - $inputSize) > 0) {
+            $padding = str_repeat($padWith, $insufficient);
+        }
+        $leftLength = $rightLength = 0;
+        if ($type === STR_PAD_RIGHT) {
+            $rightLength = $insufficient;
+        } else if ($type === STR_PAD_LEFT) {
+            $leftLength = $insufficient;
+        } else if ($type === STR_PAD_BOTH) {
+            $leftLength = $rightLength = floor($insufficient / 2);
+            if ($insufficient % 2 === 1) {
+                $rightLength++;
+            }
+        }
+        return str_repeat($padWith, $leftLength) . $input . str_repeat($padWith, $rightLength);
     }
 }
