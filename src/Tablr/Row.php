@@ -43,6 +43,11 @@ class Tablr_Row implements IteratorAggregate, ArrayAccess
         return false;
     }
 
+    public function isBody()
+    {
+        return true;
+    }
+
     public function isFooter()
     {
         return false;

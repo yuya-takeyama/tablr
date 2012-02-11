@@ -5,4 +5,9 @@ class Tablr_HeaderRow extends Tablr_Row
     {
         return true;
     }
+
+    public function isBody()
+    {
+        return false;
+    }
 }
