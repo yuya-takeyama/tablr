@@ -79,6 +79,12 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
                 )),
                 array(3, 6),
             ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'あいうえお'),
+                )),
+                array(10),
+            ),
         );
     }
 }
