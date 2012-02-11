@@ -37,4 +37,19 @@ class Tablr_Row implements IteratorAggregate, ArrayAccess
     {
         throw new BadMethodCallException(__METHOD__ . ' is immutable.');
     }
+
+    public function isHeader()
+    {
+        return false;
+    }
+
+    public function isFooter()
+    {
+        return false;
+    }
+
+    public function toArray()
+    {
+        return $this->_cells;
+    }
 }

@@ -22,7 +22,7 @@ class Tablr_TableTest extends TablrTestCase
         $table = new Tablr_Table;
         $header = array('foo', 'bar', 'baz');
         $table->setHeader($header);
-        $this->assertEquals($header, $table->getHeader());
+        $this->assertEqualsAsRow($header, $table->getHeader());
     }
 
     /**

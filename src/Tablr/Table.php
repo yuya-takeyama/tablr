@@ -1,5 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/Row.php';
+require_once dirname(__FILE__) . '/HeaderRow.php';
+require_once dirname(__FILE__) . '/FooterRow.php';
 
 class Tablr_Table implements ArrayAccess, IteratorAggregate
 {
@@ -37,7 +39,7 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
      */
     public function setHeader($header)
     {
-        $this->_header = $header;
+        $this->_header = new Tablr_HeaderRow($header);
     }
 
     /**
