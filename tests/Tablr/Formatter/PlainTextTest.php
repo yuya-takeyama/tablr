@@ -48,7 +48,6 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
      */
     public function format_should_expand_cells_correctly_if_multibyte_chars_are_included()
     {
-        $this->markTestIncomplete();
         $table = $this->createTable(array(
             array('foo' => 'あいうえお', 'bar' => 'あ'),
         ));

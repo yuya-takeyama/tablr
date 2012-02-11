@@ -7,14 +7,14 @@ class Tablr_Formatter_PlainText
         $result = '';
         $result .= '|';
         foreach ($table->getHeader() as $i => $cell) {
-            $result .= str_pad($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
+            $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
         }
         $result .= "\n";
         foreach ($table as $row) {
             $result .= "|";
             $i = 0;
             foreach ($row as $cell) {
-                $result .= str_pad($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
+                $result .= $this->getPaddedString($cell, $sizes[$i], ' ', STR_PAD_RIGHT) . '|';
                 $i++;
             }
             $result .= "\n";
