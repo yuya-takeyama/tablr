@@ -103,4 +103,26 @@ class Tablr_Formatter_PlainTextTest extends TablrTestCase
             ),
         );
     }
+
+    /**
+     * @test
+     * @dataProvider provideGetPaddedStringInputsAndOutput
+     */
+    public function getPaddedString_should_pads_input_with_string($input, $size, $padWith, $type, $expected)
+    {
+        $this->assertEquals(
+            $expected,
+            $this->formatter->getPaddedString($input, $size, $padWith, $type)
+        );
+    }
+
+    public function provideGetPaddedStringInputsAndOutput()
+    {
+        return array(
+            array('a', 5, ' ', STR_PAD_RIGHT, 'a    '),
+            array('a', 5, ' ', STR_PAD_LEFT,  '    a'),
+            array('a', 5, ' ', STR_PAD_BOTH,  '  a  '),
+            array('a', 4, ' ', STR_PAD_BOTH,  ' a  '),
+        );
+    }
 }

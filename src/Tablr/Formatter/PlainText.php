@@ -46,4 +46,18 @@ class Tablr_Formatter_PlainText
         }
         return $sizes;
     }
+
+    /**
+     * Multi-byte enabled str_pad().
+     *
+     * @param  string $input
+     * @param  int    $size
+     * @param  string $padWith
+     * @param  int    $type    STR_PAD_RIGHT | STR_PAD_LEFT | STR_PAD_BOTH
+     * @return string
+     */
+    public static function getPaddedString($input, $size, $padWith, $type = STR_PAD_RIGHT)
+    {
+        return str_pad($input, $size, $padWith, $type);
+    }
 }
