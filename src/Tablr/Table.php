@@ -72,7 +72,7 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
 
     protected function _setHeaderFromRow($row)
     {
-        $this->_header = array_keys($row);
+        $this->setHeader(array_keys($row));
     }
 
     public function offsetSet($key, $value)
