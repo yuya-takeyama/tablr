@@ -99,4 +99,9 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
     {
         return new ArrayIterator(array_merge(array($this->getHeader()), $this->_rows));
     }
+
+    public function format($formatter)
+    {
+        return $formatter->format($this);
+    }
 }
