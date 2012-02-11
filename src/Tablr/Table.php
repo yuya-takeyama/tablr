@@ -1,7 +1,7 @@
 <?php
 require_once dirname(__FILE__) . '/Row.php';
 
-class Tablr_Table implements ArrayAccess
+class Tablr_Table implements ArrayAccess, IteratorAggregate
 {
     /**
      * Header columns.
@@ -91,5 +91,10 @@ class Tablr_Table implements ArrayAccess
     public function offsetUnset($key)
     {
         throw new BadMethodCallException(__METHOD__ . ' is immutable.');
+    }
+
+    public function getIterator()
+    {
+        return new ArrayIterator($this->_rows);
     }
 }
