@@ -11,7 +11,7 @@ class Tablr_TableTest extends TablrTestCase
         $table = new Tablr_Table(array(
             array('foo' => 1, 'bar' => 2, 'baz' => 3)
         ));
-        $this->assertEquals(array('foo', 'bar', 'baz'), $table->getHeader());
+        $this->assertEqualsAsRow(array('foo', 'bar', 'baz'), $table->getHeader());
     }
 
     /**
