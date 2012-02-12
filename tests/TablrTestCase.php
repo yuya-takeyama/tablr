@@ -1,5 +1,5 @@
 <?php
-require_once 'Tablr.php';
+require_once 'Tablr/Table.php';
 
 class TablrTestCase extends PHPUnit_Framework_TestCase
 {
@@ -10,7 +10,6 @@ class TablrTestCase extends PHPUnit_Framework_TestCase
 
     public function createTable($rows)
     {
-        $tablr = new Tablr;
-        return $tablr->createTable($rows);
+        return new Tablr_Table($rows);
     }
 }

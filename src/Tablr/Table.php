@@ -1,4 +1,12 @@
 <?php
+/**
+ * Tablr.
+ *
+ * Simple toolkit for 2-dimensional tables.
+ *
+ * @author Yuya Takeyama
+ * @link   https://github.com/yuya-takeyama/tablr
+ */
 require_once dirname(__FILE__) . '/Row.php';
 require_once dirname(__FILE__) . '/HeaderRow.php';
 require_once dirname(__FILE__) . '/FooterRow.php';
@@ -107,11 +115,28 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
         throw new BadMethodCallException(__METHOD__ . ' is immutable.');
     }
 
+    /**
+     * Gets iterator contains header, body and footer rows.
+     *
+     * @return ArrayIterator
+     */
     public function getIterator()
     {
-        return new ArrayIterator(array_merge(array($this->getHeader()), $this->_rows));
+        return new ArrayIterator(array_merge(
+            array($this->getHeader()),
+            $this->_rows,
+            $this->_footerRows
+        ));
     }
 
+    /**
+     * Gets formatted output.
+     *
+     * Formatting is delegated to specified formatter.
+     *
+     * @param
+     * @return string
+     */
     public function format($formatter)
     {
         return $formatter->format($this);

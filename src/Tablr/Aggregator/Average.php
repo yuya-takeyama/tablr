@@ -9,23 +9,25 @@
  */
 
 /**
- * Sum aggregator.
+ * Average aggregator.
  *
  * @author Yuya Takeyama
  */
-class Tablr_Aggregator_Sum
+class Tablr_Aggregator_Average
 {
     public function aggregate($cells)
     {
+        $cnt = 0;
         $sum = 0;
         foreach ($cells as $cell) {
             $sum += $cell;
+            $cnt++;
         }
-        return $sum;
+        return $sum / $cnt;
     }
 
     public static function getDefaultName()
     {
-        return 'Sum';
+        return 'Average';
     }
 }

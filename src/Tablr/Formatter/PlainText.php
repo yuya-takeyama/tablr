@@ -1,4 +1,18 @@
 <?php
+/**
+ * Tablr.
+ *
+ * Simple toolkit for 2-dimensional tables.
+ *
+ * @author Yuya Takeyama
+ * @link   https://github.com/yuya-takeyama/tablr
+ */
+
+/**
+ * Plain text formatter.
+ *
+ * @author Yuya Takeyama
+ */
 class Tablr_Formatter_PlainText
 {
     public function format($table)
