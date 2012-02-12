@@ -3,7 +3,7 @@ Tablr
 
 Simple toolkit for 2-dimensional tables.
 
-Tablr is optimized for result set of SELECT queries to RDBMS.
+Tablr is optimized for result set from SELECT queries to RDBMS.
 
 Synopsis
 --------
@@ -33,10 +33,30 @@ This script outputs like below.
 |2011/01|       100|     10|     90|
 |2011/02|       200|     40|    160|
 |2011/03|       140|    190|    -50|
-|2011/04|     1,300|     15|  1,285|
 |Average|       435|  63.75| 371.25|
 |Sum    |     1,740|    255|  1,485|
 ```
+
+Features
+--------
+
+### Formatter
+
+Formatters generate table as its formatting rule.
+
+Currently, below formatters are available.
+
+- Plain-text formatter
+- HTML formatter
+
+### Aggregator
+
+Aggregators aggregate each column and add the result into footer of table.
+
+Currently, below aggregators are available.
+
+- Sum aggregator
+- Average aggregator
 
 LICENSE
 -------
