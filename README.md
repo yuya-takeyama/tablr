@@ -39,7 +39,7 @@ This script outputs like below.
 LICENSE
 -------
 
-The MIT LicenSE
+The MIT License
 
 Author
 ------
