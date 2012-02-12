@@ -3,6 +3,8 @@ Tablr
 
 Simple toolkit for 2-dimensional tables.
 
+Tablr is optimized for result set of SELECT queries to RDBMS.
+
 Synopsis
 --------
 
