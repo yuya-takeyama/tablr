@@ -10,7 +10,7 @@ Synopsis
 
 ```php
 <?php
-// Create table from 2-dimensional array.
+// Creates table from 2-dimensional array.
 $table = new Tablr_Table(array(
     array('month' => '2011/01', 'registered' =>  100, 'retired' =>  10, 'inc_dec' =>   90),
     array('month' => '2011/02', 'registered' =>  200, 'retired' =>  40, 'inc_dec' =>  160),
