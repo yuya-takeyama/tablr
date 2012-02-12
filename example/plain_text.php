@@ -2,6 +2,7 @@
 set_include_path(dirname(__FILE__) . '/../src' . PATH_SEPARATOR . get_include_path());
 require_once 'Tablr.php';
 require_once 'Tablr/Formatter/PlainText.php';
+require_once 'Tablr/Formatter/Html.php';
 require_once 'Tablr/Aggregator/Average.php';
 require_once 'Tablr/Aggregator/Sum.php';
 
@@ -15,4 +16,8 @@ $table->setHeader(array('Month', 'Registered', 'Retired', 'Inc/Dec'));
 $table->addAggregator(new Tablr_Aggregator_Average);
 $table->addAggregator(new Tablr_Aggregator_Sum);
 
+// Plain-text formatter
 echo $table->format(new Tablr_Formatter_PlainText);
+
+// HTML formatter
+echo $table->format(new Tablr_Formatter_Html);
