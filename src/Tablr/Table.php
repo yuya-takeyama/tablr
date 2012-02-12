@@ -20,6 +20,13 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
     protected $_rows;
 
     /**
+     * Footer rows.
+     *
+     * @var array
+     */
+    protected $_footerRows = array();
+
+    /**
      * Constructor.
      *
      * @param array $rows Collection of hash table.
@@ -50,6 +57,11 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
     public function getHeader()
     {
         return $this->_header;
+    }
+
+    public function getFooterRows()
+    {
+        return $this->_footerRows;
     }
 
     /**
@@ -103,5 +115,20 @@ class Tablr_Table implements ArrayAccess, IteratorAggregate
     public function format($formatter)
     {
         return $formatter->format($this);
+    }
+
+    public function addAggregator($aggregator, $name = NULL)
+    {
+        $columnCount = count($this->_header->toArray());
+        $cells = array();
+        $cells[0] = $name ? $name : $aggregator->getDefaultName();
+        for ($key = 1; $key < $columnCount; $key++) {
+            $values = array();
+            foreach ($this->_rows as $row) {
+                $values[] = $row[$key];
+            }
+            $cells[] = $aggregator->aggregate($values);
+        }
+        $this->_footerRows[] = new Tablr_FooterRow($cells);
     }
 }

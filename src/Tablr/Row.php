@@ -10,7 +10,10 @@ class Tablr_Row implements IteratorAggregate, ArrayAccess
 
     public function __construct($cells)
     {
-        $this->_cells = $cells;
+        $this->_cells = array();
+        foreach ($cells as $cell) {
+            $this->_cells[] = $cell;
+        }
     }
 
     public function getIterator()
