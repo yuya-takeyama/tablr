@@ -11,5 +11,5 @@ require_once dirname(__FILE__) . '/Tablr/Table.php';
 
 class Tablr
 {
-    const VERSION = '0.0.0';
+    const VERSION = '0.0.1';
 }
