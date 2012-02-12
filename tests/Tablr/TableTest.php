@@ -31,10 +31,10 @@ class Tablr_TableTest extends TablrTestCase
      */
     public function offsetGet_should_return_Row()
     {
-        $this->markTestIncomplete();
-        $row   = array('foo' => 1, 'bar' => 2, 'baz' => 2);
-        $table = new Tablr_Table(array($row));
-        $this->assertEqualsAsRow($row, $table[0]);
+        $table = new Tablr_Table(array(
+            array('foo' => 1, 'bar' => 2, 'baz' => 3),
+        ));
+        $this->assertEqualsAsRow(array(1, 2, 3), $table[0]);
     }
 
     /**
