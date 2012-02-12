@@ -9,7 +9,6 @@ $table = new Tablr_Table(array(
     array('year-month' => '2011/01', 'registered' =>  100, 'retired' =>  10, 'inc_dec' =>   90),
     array('year-month' => '2011/02', 'registered' =>  200, 'retired' =>  40, 'inc_dec' =>  160),
     array('year-month' => '2011/03', 'registered' =>  140, 'retired' => 190, 'inc_dec' =>  -50),
-    array('year-month' => '2011/04', 'registered' => 1300, 'retired' =>  15, 'inc_dec' => 1285),
 ));
 $table->setHeader(array('Month', 'Registered', 'Retired', 'Inc/Dec'));
 
