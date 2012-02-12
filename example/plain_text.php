@@ -18,6 +18,3 @@ $table->addAggregator(new Tablr_Aggregator_Sum);
 
 // Plain-text formatter
 echo $table->format(new Tablr_Formatter_PlainText);
-
-// HTML formatter
-echo $table->format(new Tablr_Formatter_Html);
