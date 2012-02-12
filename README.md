@@ -37,6 +37,27 @@ This script outputs like below.
 |Sum    |     1,740|    255|  1,485|
 ```
 
+Features
+--------
+
+### Formatter
+
+Formatters generate table as its formatting rule.
+
+Currently, below formatters are available.
+
+- Plain-text formatter
+- HTML formatter
+
+### Aggregator
+
+Aggregators aggregate each column and add the result into footer of table.
+
+Currently, below aggregators are available.
+
+- Sum aggregator
+- Average aggregator
+
 LICENSE
 -------
 
