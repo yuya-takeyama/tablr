@@ -48,6 +48,7 @@ Currently, below formatters are available.
 
 - Plain-text formatter
 - HTML formatter
+- TSV formatter
 
 ### Aggregator
 
