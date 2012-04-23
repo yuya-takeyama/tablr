@@ -3,7 +3,7 @@ require_once 'Tablr/Formatter/Html.php';
 require_once 'Tablr/Aggregator/Average.php';
 require_once 'Tablr/Aggregator/Sum.php';
 
-class Tablr_Formatter_HtmlFormatterTest extends TablrTestCase
+class Tablr_Formatter_HtmlTest extends TablrTestCase
 {
     /**
      * @test
