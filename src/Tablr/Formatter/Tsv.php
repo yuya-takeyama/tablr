@@ -15,6 +15,9 @@
  */
 class Tablr_Formatter_Tsv
 {
+    /**
+     * @TODO escape
+     */
     public function format($table)
     {
         $result = '';
