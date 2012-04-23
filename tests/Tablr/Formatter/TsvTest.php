@@ -29,6 +29,22 @@ class Tablr_Formatter_TsvTest extends TablrTestCase
                 "foo\n" .
                 "FOO\n"
             ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'FOO'),
+                    array('foo' => 'BAR'),
+                )),
+                "foo\n" .
+                "FOO\n" .
+                "BAR\n"
+            ),
+            array(
+                $this->createTable(array(
+                    array('foo' => 'FOO', 'bar' => 'BAR', 'baz' => 'BAZ'),
+                )),
+                "foo\tbar\tbaz\n" .
+                "FOO\tBAR\tBAZ\n"
+            ),
         );
     }
 }
